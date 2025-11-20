@@ -58,6 +58,7 @@ class Telemetry(BaseModel):
         raw_user_utterance: str,
         state: dict[str, Any],
         decisions: dict[str, Any],
+        user_view: str,
         goal_spec: GoalSpec | None = None,
         task_set: TaskSet | None = None,
         dispatch_envelope: DispatchEnvelope | None = None,
@@ -94,9 +95,16 @@ class Telemetry(BaseModel):
             "state": state,
         }
 
+        # Build outputs for fingerprinting
+        outputs = {
+            "user_view": user_view,
+            "decisions": decisions,
+            "artifacts": artifacts,
+        }
+
         # Compute fingerprints
         input_hash = cls._hash_object(inputs)
-        output_hash = ""  # Will be computed after output is generated
+        output_hash = cls._hash_object(outputs)
 
         io_fingerprints = {
             "input_hash": input_hash,
