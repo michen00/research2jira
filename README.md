@@ -74,13 +74,13 @@ After every turn, the system emits machine-readable telemetry capturing inputs, 
 
 ### Setup
 
-**Option 1: Using Make (Recommended)**
+#### Option 1: Using Make (Recommended)
 
 ```bash
 make develop
 ```
 
-**Option 2: Manual Setup**
+#### Option 2: Manual Setup
 
 ```bash
 # Install dependencies

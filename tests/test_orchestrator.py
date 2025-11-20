@@ -51,11 +51,11 @@ class TestAIStrategist:
         assert strategist.current_phase == Phase.CLARIFY
 
         # Answer questions to move to planning
-        for _ in range(5):
-            if strategist.current_phase == Phase.CLARIFY:
-                strategist.process_turn("Test answer")
-            elif strategist.current_phase == Phase.PLAN_TASKS:
-                break
+        max_iterations = 5
+        iteration = 0
+        while iteration < max_iterations and strategist.current_phase == Phase.CLARIFY:
+            strategist.process_turn("Test answer")
+            iteration += 1
 
         # Should eventually reach PLAN_TASKS
         assert strategist.current_phase in [

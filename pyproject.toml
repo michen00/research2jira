@@ -22,7 +22,6 @@ dependencies = [
 ]
 
 [project.scripts]
-example-script = "research2jira.example_script:main"
 research2jira = "research2jira.cli:main"
 
 [dependency-groups]
