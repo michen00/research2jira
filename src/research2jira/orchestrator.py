@@ -60,6 +60,7 @@ class AIStrategist:
             raw_user_utterance=user_input,
             state=self.state.to_dict(),
             decisions=decisions,
+            user_view=user_view,
             goal_spec=goal_spec,
             task_set=task_set,
             dispatch_envelope=dispatch_envelope,

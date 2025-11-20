@@ -18,6 +18,7 @@ class TestTelemetry:
             raw_user_utterance="Test input",
             state={"test": "state"},
             decisions={"confidence": 0.5},
+            user_view="Test output",
         )
 
         assert telemetry.session_id == "test-123"
@@ -42,6 +43,7 @@ class TestTelemetry:
             raw_user_utterance="Test",
             state={},
             decisions={},
+            user_view="Test output",
             goal_spec=goal,
         )
 
@@ -58,6 +60,7 @@ class TestTelemetry:
             raw_user_utterance="Test",
             state={},
             decisions={},
+            user_view="Test output",
         )
 
         json_block = telemetry.to_json_block()
@@ -78,6 +81,7 @@ class TestTelemetry:
             raw_user_utterance="Contact me at test@example.com",
             state={},
             decisions={},
+            user_view="Test output",
         )
 
         # Check if email was redacted
@@ -95,11 +99,15 @@ class TestTelemetry:
             raw_user_utterance="Test",
             state={},
             decisions={},
+            user_view="Test output",
         )
 
         assert "input_hash" in telemetry.io_fingerprints
         assert telemetry.io_fingerprints["input_hash"].startswith("sha256-")
         assert len(telemetry.io_fingerprints["input_hash"]) > 10
+        assert "output_hash" in telemetry.io_fingerprints
+        assert telemetry.io_fingerprints["output_hash"].startswith("sha256-")
+        assert len(telemetry.io_fingerprints["output_hash"]) > 10
 
     def test_telemetry_defaults(self) -> None:
         """Test telemetry default values."""
@@ -110,6 +118,7 @@ class TestTelemetry:
             raw_user_utterance="Test",
             state={},
             decisions={},
+            user_view="Test output",
         )
 
         assert telemetry.limits["clarifier_max"] == 5
@@ -126,6 +135,7 @@ class TestTelemetry:
             raw_user_utterance="Test",
             state={},
             decisions={},
+            user_view="Test output",
         )
 
         assert "T" in telemetry.timestamp_iso  # ISO format
@@ -144,6 +154,7 @@ class TestTelemetry:
             raw_user_utterance="Test",
             state={},
             decisions={},
+            user_view="Test output",
             dispatch_envelope=envelope,
         )
 
