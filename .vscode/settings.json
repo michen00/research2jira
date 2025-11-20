@@ -57,5 +57,6 @@
   "pylint.importStrategy": "fromEnvironment",
   "python.testing.pytestArgs": ["tests"],
   "python.testing.pytestEnabled": true,
-  "shfmt.formatIgnored": false
+  "shfmt.formatIgnored": false,
+  "python.languageServer": "None"
 }

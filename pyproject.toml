@@ -1,7 +1,7 @@
 [project]
-name = "template"
+name = "research2jira"
 version = "0.0.0"
-description = "template"
+description = "research2jira"
 readme = "README.md"
 authors = [{ name = "Michael I Chen", email = "michael.chen.0@gmail.com" }]
 requires-python = ">=3.11"
@@ -15,13 +15,15 @@ dependencies = [
     "pydantic>=2.12.2",
     "pyyaml>=6.0.2",
     "rich-argparse>=1.7.1",
+    "rich>=13.0.0",
     "structlog>=25.4.0",
     "typer>=0.16.0",
     "yapic-json>=1.9.5",
 ]
 
 [project.scripts]
-example-script = "template.example_script:main"
+example-script = "research2jira.example_script:main"
+research2jira = "research2jira.cli:main"
 
 [dependency-groups]
 dev = [
@@ -39,7 +41,7 @@ default-groups = []
 package        = true
 
 [tool.uv.workspace]
-members = ["template"]
+members = ["research2jira"]
 
 [tool.mypy]
 allow_redefinition = true
@@ -71,7 +73,7 @@ addopts = [
     "-ra",
     "--strict-config",
     "--strict-markers",
-    "--cov=template",
+    "--cov=research2jira",
     "--cov-report=term-missing",
 ]
 filterwarnings = ["error", "ignore::DeprecationWarning"]

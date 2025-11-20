@@ -1,6 +1,6 @@
 [run]
 branch = True
-source_pkgs = template
+source_pkgs = research2jira
 
 [report]
 ; Regexes for lines to exclude from consideration
