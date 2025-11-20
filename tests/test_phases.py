@@ -84,7 +84,8 @@ class TestClarifyHandler:
         state.questions_asked.append("Who is the target audience?")
         handler = ClarifyHandler(state)
 
-        _user_view, _decisions, _next_action = handler.process("Engineering team")
+        # _user_view, _decisions, _next_action = handler.process("Engineering team")
+        handler.process("Engineering team")
 
         assert "Engineering team" in state.prior_answers[0]["answer"]
         assert "audience" in state.slots_filled
