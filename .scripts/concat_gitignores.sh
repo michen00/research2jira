@@ -131,7 +131,7 @@ for url in "${URLS[@]}"; do
   PREFACE_LENGTH=$((${#FILENAME} + 4)) # Length of " # FILENAME # "
   PREFACE=$(printf '#%.0s' $(seq 1 $PREFACE_LENGTH))
 
-  # Preface block for this research2jira
+  # Preface block for this template
   {
     echo "$PREFACE"
     echo "# $FILENAME #"
