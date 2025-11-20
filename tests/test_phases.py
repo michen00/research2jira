@@ -303,8 +303,8 @@ class TestDispatchHandler:
         user_view, _decisions, next_action = handler.process("")
 
         assert hasattr(state, "dispatch_envelope")
-        assert state.dispatch_envelope is not None  # type: ignore[attr-defined]
-        assert state.dispatch_envelope.project_key == "RES"  # type: ignore[attr-defined]
+        assert state.dispatch_envelope is not None
+        assert state.dispatch_envelope.project_key == "RES"
         assert "Jira Dispatch" in user_view or "dispatch" in user_view.lower()
         assert next_action == NextAction.END
 
@@ -325,6 +325,6 @@ class TestDispatchHandler:
         handler.process("")
 
         assert hasattr(state, "dispatch_envelope")
-        envelope = state.dispatch_envelope  # type: ignore[attr-defined]
+        envelope = state.dispatch_envelope
         assert "ML frameworks" in envelope.story["description"]
         assert "Engineers" in envelope.story["description"]

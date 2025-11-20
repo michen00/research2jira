@@ -20,32 +20,32 @@ class TestEnums:
 
     def test_depth_enum(self) -> None:
         """Test Depth enum values."""
-        assert Depth.EXECUTIVE_BRIEF == "executive-brief"
-        assert Depth.TECH_BRIEF == "tech-brief"
-        assert Depth.DEEP_DIVE == "deep-dive"
+        assert Depth.EXECUTIVE_BRIEF.value == "executive-brief"
+        assert Depth.TECH_BRIEF.value == "tech-brief"
+        assert Depth.DEEP_DIVE.value == "deep-dive"
 
     def test_phase_enum(self) -> None:
         """Test Phase enum values."""
-        assert Phase.GOAL_CAPTURE == "goal_capture"
-        assert Phase.CLARIFY == "clarify"
-        assert Phase.PLAN_TASKS == "plan_tasks"
-        assert Phase.PREVIEW == "preview"
-        assert Phase.DISPATCH == "dispatch"
+        assert Phase.GOAL_CAPTURE.value == "goal_capture"
+        assert Phase.CLARIFY.value == "clarify"
+        assert Phase.PLAN_TASKS.value == "plan_tasks"
+        assert Phase.PREVIEW.value == "preview"
+        assert Phase.DISPATCH.value == "dispatch"
 
     def test_priority_enum(self) -> None:
         """Test Priority enum values."""
-        assert Priority.HIGH == "High"
-        assert Priority.MEDIUM == "Medium"
-        assert Priority.LOW == "Low"
+        assert Priority.HIGH.value == "High"
+        assert Priority.MEDIUM.value == "Medium"
+        assert Priority.LOW.value == "Low"
 
     def test_next_action_enum(self) -> None:
         """Test NextAction enum values."""
-        assert NextAction.ASK == "ask"
-        assert NextAction.PLAN == "plan"
-        assert NextAction.PREVIEW == "preview"
-        assert NextAction.AWAIT_CONFIRMATION == "await_confirmation"
-        assert NextAction.DISPATCH == "dispatch"
-        assert NextAction.END == "end"
+        assert NextAction.ASK.value == "ask"
+        assert NextAction.PLAN.value == "plan"
+        assert NextAction.PREVIEW.value == "preview"
+        assert NextAction.AWAIT_CONFIRMATION.value == "await_confirmation"
+        assert NextAction.DISPATCH.value == "dispatch"
+        assert NextAction.END.value == "end"
 
 
 class TestGoalSpec:
