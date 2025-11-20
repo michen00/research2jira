@@ -8,7 +8,7 @@ usage() {
   cat << EOF
 Usage: $SCRIPT_NAME [--output <output_file>] [<input_file>]
 
-Concatenate multiple .gitignore research2jiras into a single file by fetching
+Concatenate multiple .gitignore templates into a single file by fetching
 research2jira URLs from stdin, a file, or built-in defaults.
 
 Inputs:
@@ -110,7 +110,7 @@ HEADER=$(printf '#%.0s' $(seq 1 $HEADER_LENGTH))
 
 {
   echo "$HEADER"
-  echo "# This .gitignore is composed of the following research2jiras (retrieved $(date +%Y-%m-%d)):"
+  echo "# This .gitignore is composed of the following templates (retrieved $(date +%Y-%m-%d)):"
   for url in "${URLS[@]}"; do
     echo "# - $url"
   done
