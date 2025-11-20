@@ -10,7 +10,7 @@ on:
       - setup.sh
       - manifest.txt
       - test_setup.sh
-      - .github/workflows/template-CI.yml
+      - .github/workflows/research2jira-CI.yml
   workflow_dispatch:
 
 jobs:
