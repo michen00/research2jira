@@ -149,11 +149,16 @@ class Telemetry(BaseModel):
             redacted_fields.append("email")
 
         # API keys / tokens (basic pattern)
-        if re.search(r"(?i)(api[_-]?key|token|secret|password)\s*[:=]\s*[\w-]+", text):
+        if re.search(
+            r"(api[_-]?key|token|secret|password)\s*[:=]\s*[\w-]+",
+            text,
+            flags=re.IGNORECASE,
+        ):
             redacted = re.sub(
-                r"((?i)(api[_-]?key|token|secret|password)\s*[:=]\s*)[\w-]+",
+                r"((api[_-]?key|token|secret|password)\s*[:=]\s*)[\w-]+",
                 r"\1[REDACTED]",
                 redacted,
+                flags=re.IGNORECASE,
             )
             redacted_fields.append("credentials")
 
