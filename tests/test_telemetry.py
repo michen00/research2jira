@@ -90,6 +90,39 @@ class TestTelemetry:
             assert telemetry.redactions["applied"] is True
             assert "email" in telemetry.redactions["fields"]
 
+    def test_telemetry_redaction_api_keys(self) -> None:
+        """Test that API keys and credentials are redacted without errors."""
+        test_cases = [
+            "api_key: abc123",
+            "API_KEY=xyz789",
+            "api-key: test-key-123",
+            "token: secret-token-456",
+            "SECRET: my-secret-value",
+            "password=my-password-123",
+        ]
+
+        for test_input in test_cases:
+            # Should not raise an error
+            telemetry = Telemetry.create(
+                session_id="test",
+                turn_id="turn-001",
+                phase=Phase.GOAL_CAPTURE,
+                raw_user_utterance=test_input,
+                state={},
+                decisions={},
+                user_view="Test output",
+            )
+
+            # Check that credentials were redacted
+            utterance = telemetry.inputs["raw_user_utterance"]
+            assert "[REDACTED]" in utterance
+            assert telemetry.redactions["applied"] is True
+            assert "credentials" in telemetry.redactions["fields"]
+            # Verify the actual credential value is not in the output
+            # Extract the value part (after : or =)
+            value_part = test_input.split(":", 1)[-1].split("=", 1)[-1].strip()
+            assert value_part not in utterance
+
     def test_telemetry_fingerprints(self) -> None:
         """Test that fingerprints are generated."""
         telemetry = Telemetry.create(
